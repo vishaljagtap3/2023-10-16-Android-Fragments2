@@ -21,6 +21,12 @@ class CounterFragment : Fragment() {
             txtCount.text = "$count"
         }
 
+    var title : String = ""
+        set(value) {
+            field = value
+            txtTitle.text = value
+        }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,11 +34,19 @@ class CounterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = layoutInflater.inflate(R.layout.counter_fragment, null)
-        initViews(view)
 
+        initViews(view)
+        initInput()
         initListeners()
 
         return view
+    }
+
+    private fun initInput() {
+        if(arguments != null) {
+            title = requireArguments().getString("title", "Counter Fragment")
+            count = requireArguments().getInt("count", 0)
+        }
     }
 
     private fun initListeners() {

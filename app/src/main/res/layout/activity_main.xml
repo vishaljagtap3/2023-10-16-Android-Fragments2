@@ -18,6 +18,14 @@
             android:layout_height="wrap_content"
             android:hint="Enter title for fragment" />
 
+        <EditText
+            android:inputType="number"
+            android:text="0"
+            android:hint="Count"
+            android:id="@+id/edtCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

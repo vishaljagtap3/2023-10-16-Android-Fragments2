@@ -8,19 +8,25 @@ import android.widget.EditText
 class MainActivity : AppCompatActivity() {
 
     private lateinit var edtCounterFragmentTitle : EditText
+    private lateinit var edtCount : EditText
     private lateinit var btnAddFragment : Button
     private lateinit var btnRemoveFragment : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
-
         initListeners()
     }
 
     private fun initListeners() {
         btnAddFragment.setOnClickListener {
             val counterFragment = CounterFragment()
+
+            val inputBundle = Bundle()
+            inputBundle.putString("title", edtCounterFragmentTitle.text.toString())
+            inputBundle.putInt("count", edtCount.text.toString().toInt())
+
+            counterFragment.arguments = inputBundle
 
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.mainContainer, counterFragment, null)
@@ -31,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         setContentView(R.layout.activity_main)
         edtCounterFragmentTitle = findViewById(R.id.edtFragmentCounterTitle)
+        edtCount = findViewById(R.id.edtCount)
         btnAddFragment = findViewById(R.id.btnAddFragment)
         btnRemoveFragment = findViewById(R.id.btnRemoveFragment)
     }
