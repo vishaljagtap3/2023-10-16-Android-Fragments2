@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnAddFragment : Button
     private lateinit var btnRemoveFragment : Button
 
+    private val counterFragments = ArrayList<CounterFragment>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         btnAddFragment.setOnClickListener {
             val counterFragment = CounterFragment()
 
+            counterFragments.add(counterFragment)
+
             val inputBundle = Bundle()
             inputBundle.putString("title", edtCounterFragmentTitle.text.toString())
             inputBundle.putInt("count", edtCount.text.toString().toInt())
@@ -31,6 +35,23 @@ class MainActivity : AppCompatActivity() {
             val fragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.mainContainer, counterFragment, null)
             fragmentTransaction.commit()
+        }
+
+        btnRemoveFragment.setOnClickListener {
+
+            if(counterFragments.size == 0) {
+                return@setOnClickListener
+            }
+
+            supportFragmentManager.beginTransaction()
+                .remove(counterFragments.removeLast())
+                .commit()
+
+            /*supportFragmentManager.beginTransaction()
+                .remove(counterFragments[counterFragments.size - 1])
+                .commit()
+
+            counterFragments.removeLast()*/
         }
     }
 
