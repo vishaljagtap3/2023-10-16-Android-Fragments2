@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:background="#cfcfcf"
+    android:paddingBottom="4dp">
+
+    <TextView
+        android:text="Android Students"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/txtTitle"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="0"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/txtCount"
+        android:padding="16dp"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/txtCount"
+        app:layout_constraintTop_toTopOf="@id/txtCount"
+        app:layout_constraintLeft_toRightOf="@id/txtCount"
+        android:text="+"
+        android:id="@+id/btnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toTopOf="@id/btnPlus"
+        app:layout_constraintLeft_toRightOf="@id/btnPlus"
+        android:text="-"
+        android:id="@+id/btnMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
